@@ -7,7 +7,6 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     zoom: 1;
-    background: #D1d1d1;
   } 
 `;
 
@@ -25,9 +24,4 @@ export const StyledEmailInputWrapper = styled.div`
 `
 export const StyledActionsWrapper = styled.div`
   padding: 10px 50px 20px;
-`
-
-export const StyledButton = styled.button`
-  background: #4262FF;
-  border-radius: 6px;
 `
