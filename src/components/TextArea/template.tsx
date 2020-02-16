@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { StyledTextAreaView, StyledTextAreaEdit, StyledItem } from './styles'
+import { RemoveIcon } from '../RemoveIcon/template'
 
 interface TextAreaProps {
   itemList: string[]
@@ -13,6 +14,9 @@ enum TextAreaModes {
 export const TextArea: React.FC<TextAreaProps> = ({ itemList }) => {
   const [mode, setMode] = useState(TextAreaModes.view)
 
+  const handleRemoveItem = (id: string) => {
+    console.log(`${id} will be removed`)
+  }
 
   const handleKeyPress = (event: { charCode: number }) => {
     if (event.charCode === 13) {
@@ -27,7 +31,7 @@ export const TextArea: React.FC<TextAreaProps> = ({ itemList }) => {
     ? (<StyledTextAreaView onClick={handleMouseClick}>
       {itemList && itemList.map((item, index) => {
         return <StyledItem key={`${item}-${index}`}>
-          {item}
+          {item} <RemoveIcon handleClick={() => handleRemoveItem(item)} />
         </StyledItem>
       })}
     </StyledTextAreaView>)
