@@ -17,11 +17,6 @@ export const StyledContainer = styled.div`
   border-radius: 8px;
 `;
 
-export const StyledEmailInputWrapper = styled.div`
-  padding: 20px 50px;
-  background: #F8F8F7;
-  border-radius: 8px 8px 0px 0px;
-`
 export const StyledActionsWrapper = styled.div`
   padding: 10px 50px 20px;
 `

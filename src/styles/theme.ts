@@ -3,7 +3,8 @@ const defaultTheme: object = {
   black: "303030",
   grey: "#F8F8F7",
   primary: "#4262FF",
-  background: "#D1D1D1"
+  background: "#D1D1D1",
+  border: "#C3C2CF"
 }
 
 export default defaultTheme
