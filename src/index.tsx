@@ -10,7 +10,7 @@ interface AppProps {
 	shareableItem?: string
 }
 
-const App: React.FC<AppProps> = (shareableItem) => {
+const App: React.FC<AppProps> = ({ shareableItem }) => {
 	const defaultShareableItem = "My Miro Board"
 	const getEmailButtonTranslation = `Add emails`
 	const getEmailCountButtonTranslation = `Get Emails count`
@@ -25,8 +25,7 @@ const App: React.FC<AppProps> = (shareableItem) => {
 		<ThemeProvider theme={defaultTheme}>
 			<GlobalStyle />
 			<StyledContainer>
-				<EmailInputWrapper shareableItem={defaultShareableItem} itemList={testListItems}>
-				</EmailInputWrapper>
+				<EmailInputWrapper shareableItem={defaultShareableItem} itemList={testListItems} />
 				<StyledActionsWrapper>
 					<Button onClick={(evt: any) => { console.log(evt) }} label={getEmailButtonTranslation}></Button>
 					<Button onClick={(evt: any) => { console.log(evt) }} label={getEmailCountButtonTranslation}></Button>
