@@ -50,3 +50,16 @@ export const StyledItem = styled.span`
     margin: 0;
   }
 `
+
+export const StyledInvalidItem = styled.span`
+  font-size: 14px;
+  max-height: 24px;
+  line-height: 24px;
+  background: ${props => props.theme.white};
+  border-bottom: 1px solid ${props => props.theme.error};
+  padding: 4px 12px;
+  margin: 0 8px 0 0;
+  :last-child {
+    margin: 0;
+  }
+`
