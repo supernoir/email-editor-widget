@@ -5,12 +5,13 @@ import { TextArea } from '../TextArea/template'
 
 interface EmailInputWrapperProps {
   shareableItem: string,
-  itemList: string[]
+  itemList: string[],
+  removeItemFromList: (item: string) => void
 }
 
-export const EmailInputWrapper: React.FC<EmailInputWrapperProps> = ({ shareableItem, itemList }) => {
+export const EmailInputWrapper: React.FC<EmailInputWrapperProps> = ({ shareableItem, itemList, removeItemFromList }) => {
   return <StyledEmailInputWrapper>
     <Title shareableItem={shareableItem} />
-    <TextArea itemList={itemList} />
+    <TextArea itemList={itemList} removeItemFromList={removeItemFromList} />
   </StyledEmailInputWrapper>
 }

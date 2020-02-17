@@ -21,14 +21,18 @@ const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
 	]
 
 	const [itemsCount, addToItemsCount] = useState(testListItems.length)
-	const [itemsList, addToItemsList] = useState(testListItems)
+	const [itemsList, setItemsList] = useState(testListItems)
 	const defaultShareableItem = "My Miro Board"
 	const defaultShareableType = ShareableTypes.email
 	const getEmailButtonTranslation = `Add ${shareableType || defaultShareableType}`
 	const getEmailCountButtonTranslation = `Get ${shareableType || defaultShareableType}s count`
 
 	const addRandomEmails = () => {
-		addToItemsList(itemsList.concat(getRandomEmailAddress()))
+		setItemsList(itemsList.concat(getRandomEmailAddress()))
+	}
+
+	const removeItemFromList = (itemToBeRemoved: string) => {
+		setItemsList(itemsList.filter(currentItem => currentItem !== itemToBeRemoved))
 	}
 
 	const getItemsCount = (set: string[]) => {
@@ -48,7 +52,7 @@ const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
 		<ThemeProvider theme={defaultTheme}>
 			<GlobalStyle />
 			<StyledContainer>
-				<EmailInputWrapper shareableItem={defaultShareableItem} itemList={itemsList} />
+				<EmailInputWrapper shareableItem={defaultShareableItem} itemList={itemsList} removeItemFromList={removeItemFromList} />
 				<StyledActionsWrapper>
 					<Button onClick={addRandomEmails} label={getEmailButtonTranslation}></Button>
 					<Button onClick={() => { getItemsCount(testListItems) }} label={getEmailCountButtonTranslation}></Button>

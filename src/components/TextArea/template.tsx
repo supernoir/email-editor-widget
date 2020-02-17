@@ -5,7 +5,8 @@ import { ShareableTypes } from '../../constants/enums'
 import { validateEmailAddress } from '../../util/validity'
 
 interface TextAreaProps {
-  itemList: string[]
+  itemList: string[],
+  removeItemFromList: (item: string) => void
 }
 
 enum TextAreaModes {
@@ -13,11 +14,12 @@ enum TextAreaModes {
   view = "view"
 }
 
-export const TextArea: React.FC<TextAreaProps> = ({ itemList }) => {
+export const TextArea: React.FC<TextAreaProps> = ({ itemList, removeItemFromList }) => {
   const [mode, setMode] = useState(TextAreaModes.view)
 
-  const handleRemoveItem = (id: string) => {
-    console.log(`${id} will be removed`)
+  const handleRemoveItem = (item: string) => {
+    console.log(`${item} will be removed`)
+    removeItemFromList(item)
   }
 
   const appendToList = (list: string[], item: string) => {
