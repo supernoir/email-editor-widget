@@ -1,9 +1,11 @@
 import styled from "styled-components"
 
 interface TextAreaProps {
-  onBlur: void,
-  onKeyPress: (e: React.KeyboardEvent | { charCode: number }) => void,
-  value: string | string[],
+  onClick?: () => void,
+  onBlur?: () => void,
+  onFocus?: () => void,
+  onKeyPress?: (e: React.KeyboardEvent | { charCode: number }) => void,
+  defaultValue?: string | string[],
   children?: React.ReactNode
 }
 
@@ -24,7 +26,7 @@ export const StyledTextAreaView = styled.div`
 
   display: flex;
   flex-wrap: wrap;
-`
+` as React.FC<TextAreaProps>
 
 export const StyledTextAreaEdit = styled.textarea`
   min-width: 220px;

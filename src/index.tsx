@@ -31,6 +31,10 @@ const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
 		setItemsList(itemsList.concat(getRandomEmailAddress()))
 	}
 
+	const addToItemsList = (email: string) => {
+		setItemsList(itemsList.concat(email))
+	}
+
 	const removeItemFromList = (itemToBeRemoved: string) => {
 		setItemsList(itemsList.filter(currentItem => currentItem !== itemToBeRemoved))
 	}
@@ -55,7 +59,12 @@ const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
 		<ThemeProvider theme={defaultTheme}>
 			<GlobalStyle />
 			<StyledContainer>
-				<EmailInputWrapper shareableItem={defaultShareableItem} itemList={itemsList} removeItemFromList={removeItemFromList} />
+				<EmailInputWrapper
+					shareableItem={defaultShareableItem}
+					itemList={itemsList}
+					removeItemFromList={removeItemFromList}
+					addToItemsList={addToItemsList}
+				/>
 				<StyledActionsWrapper>
 					<Button onClick={addRandomEmails} label={getEmailButtonTranslation}></Button>
 					<Button onClick={getItemsCount} label={getEmailCountButtonTranslation}></Button>
