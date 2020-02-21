@@ -36,14 +36,17 @@ const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
 	}
 
 	const getItemsCount = () => {
-		addToItemsCount(itemsList.filter(val => val).length)
-		let alertText = ""
-		if (itemsCount <= 0) {
+		let currentItemsCount = itemsList.filter(val => val).length
+		addToItemsCount(currentItemsCount)
+		alertItemsCount(currentItemsCount)
+	}
+
+	const alertItemsCount = (count: number) => {
+		let alertText = `There are ${count} ${defaultShareableType}s in the list`
+		if (count <= 0) {
 			alertText = `There are currently no ${defaultShareableType}s in the list`
-		} else if (itemsCount === 1) {
+		} else if (count === 1) {
 			alertText = `There is 1 ${defaultShareableType} in the list`
-		} else {
-			alertText = `There are ${itemsCount} ${defaultShareableType}s in the list`
 		}
 		alert(alertText);
 	}
