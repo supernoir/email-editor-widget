@@ -9,7 +9,7 @@ export const getRandom = (min: number, max: number) => {
 
 export const getRandomItemFromList = (list: string[]) => {
   try {
-    return list[getRandom(0, list.length)]
+    return list[getRandom(0, list.length - 1)]
   } catch (err) {
     return err
   }

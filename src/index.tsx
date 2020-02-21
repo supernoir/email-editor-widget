@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components'
 import defaultTheme from './styles/theme'
 import { ShareableTypes } from './constants/enums'
 import { getRandomEmailAddress } from './util/random'
+import { ItemList } from './types'
 
 interface AppProps {
 	shareableItem?: string,
@@ -20,8 +21,8 @@ const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
 		"johnny.appleseed@somelongdoma.in"
 	]
 
-	const [itemsCount, addToItemsCount] = useState(testListItems.length)
-	const [itemsList, setItemsList] = useState(testListItems)
+	const [itemsCount, addToItemsCount] = useState(testListItems.length || 0)
+	const [itemsList, setItemsList] = useState(new Array)
 	const defaultShareableItem = "My Miro Board"
 	const defaultShareableType = ShareableTypes.email
 	const getEmailButtonTranslation = `Add ${shareableType || defaultShareableType}`
@@ -31,8 +32,9 @@ const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
 		setItemsList(itemsList.concat(getRandomEmailAddress()))
 	}
 
-	const addToItemsList = (email: string) => {
-		setItemsList(itemsList.concat(email))
+	const addToItemsList = (list: ItemList) => {
+		let currentList = itemsList
+		setItemsList(currentList.concat(list))
 	}
 
 	const removeItemFromList = (itemToBeRemoved: string) => {

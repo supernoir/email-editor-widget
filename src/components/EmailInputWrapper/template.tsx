@@ -2,13 +2,13 @@ import React from 'react'
 import { StyledEmailInputWrapper } from './styles'
 import { Title } from '../Title/template'
 import { TextArea } from '../TextArea/template'
-import { Item } from '../../types'
+import { Item, ItemList } from '../../types'
 
 interface EmailInputWrapperProps {
   shareableItem: string,
-  itemList: string[],
+  itemList: ItemList,
   removeItemFromList: (item: Item) => void,
-  addToItemsList: (item: Item) => void
+  addToItemsList: (items: ItemList) => void
 }
 
 export const EmailInputWrapper: React.FC<EmailInputWrapperProps> = ({ shareableItem, itemList, removeItemFromList, addToItemsList }) => {

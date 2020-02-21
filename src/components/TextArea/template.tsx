@@ -6,9 +6,9 @@ import { validateEmailAddress } from '../../util/validity'
 import { Item, ItemList } from '../../types'
 
 interface TextAreaProps {
-  itemList: string[],
-  addToItemsList: (items: ItemList | Item) => void,
-  removeItemFromList: (item: Item) => void
+  itemList: ItemList,
+  removeItemFromList: (item: Item) => void,
+  addToItemsList: (items: ItemList) => void
 }
 
 enum TextAreaModes {
@@ -28,18 +28,33 @@ export const TextArea: React.FC<TextAreaProps> = ({ itemList, removeItemFromList
       const rawInput = evt.target.value;
       const updateList = (input: string) => {
         try {
-          return input.trim().split(',')
+          return input.trim().replace(/[&\/\\#+()$~%'":*?<>{}]/g, '').split(',')
         } catch {
           return itemList
         }
       }
       const updatedItems = updateList(rawInput)
-      const sanitizeTextList = (list: string[]) => {
-        return list.filter(item => item.length > 0)
+
+      const sanitizeTextList = (list: ItemList) => {
+        return list.filter(item => item.trim().length > 0)
       }
       const sanitizedItems = sanitizeTextList(updatedItems)
-      console.log(sanitizedItems)
-      addToItemsList(sanitizedItems)
+
+      const mergeLists = (oldList: ItemList, newList: ItemList) => oldList.concat(newList)
+
+      const dedupeLists = (oldList: ItemList, newList: ItemList) => {
+        return newList.filter((item) => {
+          return oldList.indexOf(item) === -1;
+        });
+      }
+
+      const dedupedItemList = dedupeLists(itemList, sanitizedItems)
+      console.log(dedupedItemList)
+      const mergedItemList = mergeLists(itemList, dedupedItemList)
+      console.log(mergedItemList)
+      const uniqueItemList = dedupeLists(dedupedItemList, dedupedItemList)
+      console.log(uniqueItemList)
+      addToItemsList(mergedItemList)
       setMode(TextAreaModes.view)
     }
   }
@@ -65,14 +80,14 @@ export const TextArea: React.FC<TextAreaProps> = ({ itemList, removeItemFromList
     }
   }
 
-  const displayItem = (item: string) => {
+  const displayItem = (item: string, index: number) => {
     if (checkItemValidity(item, ShareableTypes.email)) {
-      return <StyledItem key={item}>
+      return <StyledItem key={`${item}-${index}`}>
         {item} <RemoveIcon handleClick={() => handleRemoveItem(item)} />
       </StyledItem>
     } else {
       return <StyledInvalidItem>
-        {item}
+        {item} <RemoveIcon handleClick={() => handleRemoveItem(item)} />
       </StyledInvalidItem>
     }
   }
@@ -82,8 +97,8 @@ export const TextArea: React.FC<TextAreaProps> = ({ itemList, removeItemFromList
       onClick={toggleMode}
       onBlur={toggleMode}
     >
-      {itemList && itemList.map((item) => {
-        return displayItem(item)
+      {itemList && itemList.map((item, index) => {
+        return displayItem(item, index)
       })}
     </StyledTextAreaView>)
     : (<StyledTextAreaEdit onBlur={toggleMode} onKeyPress={handleKeyPress} defaultValue={itemList && itemList.map((item) => {

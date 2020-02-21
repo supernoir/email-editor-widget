@@ -13,6 +13,8 @@ export const StyledTextAreaView = styled.div`
   min-width: 220px;
   width: 100%;
   min-height: 120px;
+  max-height: 220px;
+  overflow-y: auto;
   height: inherit;
 
   margin: 0;
@@ -32,6 +34,8 @@ export const StyledTextAreaEdit = styled.textarea`
   min-width: 220px;
   width: 100%;
   min-height: 120px;
+  max-height: 220px;
+  overflow-y: auto;
   height: inherit;
 
   margin: 0;
