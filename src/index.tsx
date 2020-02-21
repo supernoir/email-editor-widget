@@ -35,8 +35,8 @@ const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
 		setItemsList(itemsList.filter(currentItem => currentItem !== itemToBeRemoved))
 	}
 
-	const getItemsCount = (set: string[]) => {
-		addToItemsCount(set.filter(val => val).length)
+	const getItemsCount = () => {
+		addToItemsCount(itemsList.filter(val => val).length)
 		let alertText = ""
 		if (itemsCount <= 0) {
 			alertText = `There are currently no ${defaultShareableType}s in the list`
@@ -55,7 +55,7 @@ const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
 				<EmailInputWrapper shareableItem={defaultShareableItem} itemList={itemsList} removeItemFromList={removeItemFromList} />
 				<StyledActionsWrapper>
 					<Button onClick={addRandomEmails} label={getEmailButtonTranslation}></Button>
-					<Button onClick={() => { getItemsCount(testListItems) }} label={getEmailCountButtonTranslation}></Button>
+					<Button onClick={getItemsCount} label={getEmailCountButtonTranslation}></Button>
 				</StyledActionsWrapper>
 			</StyledContainer>
 		</ThemeProvider>

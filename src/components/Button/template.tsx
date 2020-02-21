@@ -3,12 +3,12 @@ import { StyledButton } from './styles'
 
 interface ButtonInterface {
   label: string,
-  onClick: (event: any) => void
+  onClick: (evt: React.MouseEvent<Element, MouseEvent>) => void
 }
 
 export const Button: React.FC<ButtonInterface> = ({ label, onClick }) => {
   return <StyledButton
-    onClick={onClick}
+    onClick={(evt: React.MouseEvent<Element, MouseEvent>) => onClick(evt)}
   >
     {label}
   </StyledButton>
