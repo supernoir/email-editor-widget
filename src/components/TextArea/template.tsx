@@ -66,7 +66,7 @@ export const TextArea: React.FC<TextAreaProps> = ({ itemList, removeItemFromList
         return displayItem(item)
       })}
     </StyledTextAreaView>)
-    : (<StyledTextAreaEdit onKeyPress={handleKeyPress} value={itemList && itemList.map((item) => {
+    : (<StyledTextAreaEdit onBlur={setMode(TextAreaModes.view)} onKeyPress={handleKeyPress} value={itemList && itemList.map((item) => {
       return item
     })} />
     )

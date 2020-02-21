@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Title should match the snapshot 1`] = `
+<h1
+  className="sc-AxjAm ixBcin"
+>
+  <span>
+    Share 
+    <span
+      className="sc-AxirZ czJPca"
+    >
+      ExampleItem
+    </span>
+     with others
+  </span>
+</h1>
+`;

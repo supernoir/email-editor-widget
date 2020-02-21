@@ -1,5 +1,12 @@
 import styled from "styled-components"
 
+interface TextAreaProps {
+  onBlur: void,
+  onKeyPress: (e: React.KeyboardEvent | { charCode: number }) => void,
+  value: string | string[],
+  children?: React.ReactNode
+}
+
 export const StyledTextAreaView = styled.div`
   min-width: 220px;
   width: 100%;
@@ -36,7 +43,7 @@ export const StyledTextAreaEdit = styled.textarea`
   font-size: 14px;
   max-height: 24px;
   line-height: 24px;
-`
+` as React.FC<TextAreaProps>
 
 export const StyledItem = styled.span`
   font-size: 14px;
