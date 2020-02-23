@@ -12,6 +12,9 @@ import { ItemList } from './types'
 interface AppProps {
 	shareableItem?: string,
 	shareableType?: string,
+	setEmailsList: (payload: ItemList) => void,
+	getEmailsList: ItemList,
+	toggleChangeSubscription: () => void
 }
 
 const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
@@ -23,10 +26,30 @@ const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
 
 	const [itemsCount, addToItemsCount] = useState(testListItems.length || 0)
 	const [itemsList, setItemsList] = useState(new Array)
+	const [isSubscribed, toggleSubscription] = useState(false)
 	const defaultShareableItem = "My Miro Board"
 	const defaultShareableType = ShareableTypes.email
 	const getEmailButtonTranslation = `Add ${shareableType || defaultShareableType}`
 	const getEmailCountButtonTranslation = `Get ${shareableType || defaultShareableType}s count`
+
+	const setEmailsList = (payload: ItemList) => {
+		addToItemsList(payload)
+	}
+
+	const getEmailsList = () => {
+		return itemsList
+	}
+
+	const toggleChangeSubscription = () => {
+		let currentState = isSubscribed
+		toggleSubscription(!currentState)
+	}
+
+	const triggerChangeEvent = (newState: ItemList) => {
+		if (isSubscribed) {
+			return newState
+		}
+	}
 
 	const addRandomEmails = () => {
 		setItemsList(itemsList.concat(getRandomEmailAddress()))
@@ -77,4 +100,7 @@ const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
 }
 export default App
 
-ReactDOM.render(<App />, document.getElementById('email-editor-widget'))
+ReactDOM.render(<App
+	setEmailsList={App.prototype.setEmailsList}
+	getEmailsList={App.prototype.getEmailsList}
+	toggleChangeSubscription={App.prototype.toggleChangeSubscription} />, document.getElementById('email-editor-widget'))
