@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-interface TextAreaProps {
+interface StyledTextAreaProps {
   onClick?: () => void,
   onBlur?: () => void,
   onFocus?: () => void,
@@ -29,7 +29,7 @@ export const StyledTextAreaView = styled.div`
 
   display: flex;
   flex-wrap: wrap;
-` as React.FC<TextAreaProps>
+` as React.FC<StyledTextAreaProps>
 
 export const StyledTextAreaEdit = styled.textarea`
   min-width: 220px;
@@ -50,7 +50,7 @@ export const StyledTextAreaEdit = styled.textarea`
   font-size: 14px;
   max-height: 24px;
   line-height: 24px;
-` as React.FC<TextAreaProps>
+` as React.FC<StyledTextAreaProps>
 
 export const StyledItem = styled.span`
   font-size: 14px;

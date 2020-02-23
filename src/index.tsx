@@ -53,15 +53,18 @@ const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
 
 	const addRandomEmails = () => {
 		setItemsList(itemsList.concat(getRandomEmailAddress()))
+		triggerChangeEvent(itemsList)
 	}
 
 	const addToItemsList = (list: ItemList) => {
 		let currentList = itemsList
 		setItemsList(currentList.concat(list))
+		triggerChangeEvent(itemsList)
 	}
 
 	const removeItemFromList = (itemToBeRemoved: string) => {
 		setItemsList(itemsList.filter(currentItem => currentItem !== itemToBeRemoved))
+		triggerChangeEvent(itemsList)
 	}
 
 	const getItemsCount = () => {

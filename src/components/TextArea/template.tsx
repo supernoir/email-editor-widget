@@ -4,6 +4,7 @@ import { RemoveIcon } from '../RemoveIcon/template'
 import { ShareableTypes } from '../../constants/enums'
 import { validateEmailAddress } from '../../util/validity'
 import { Item, ItemList } from '../../types'
+import { mergeAndDeduplicateLists } from '../../util/list'
 
 interface TextAreaProps {
   itemList: ItemList,
@@ -33,6 +34,7 @@ export const TextArea: React.FC<TextAreaProps> = ({ itemList, removeItemFromList
 
     let { clipboardData } = evt
     let pastedData = clipboardData.getData('Text');
+
     if (mode && mode === TextAreaModes.edit) {
       addToItemsList(pastedData)
       setMode(TextAreaModes.view)
@@ -52,26 +54,7 @@ export const TextArea: React.FC<TextAreaProps> = ({ itemList, removeItemFromList
         }
       }
       const updatedItems = updateList(rawInput)
-
-      const sanitizeTextList = (list: ItemList) => {
-        return list.filter(item => item.trim().length > 0)
-      }
-      const sanitizedItems = sanitizeTextList(updatedItems)
-
-      const mergeLists = (oldList: ItemList, newList: ItemList) => oldList.concat(newList)
-
-      const dedupeLists = (oldList: ItemList, newList: ItemList) => {
-        return newList.filter((item) => {
-          return oldList.indexOf(item) === -1;
-        });
-      }
-
-      const dedupedItemList = dedupeLists(itemList, sanitizedItems)
-      console.log(dedupedItemList)
-      const mergedItemList = mergeLists(itemList, dedupedItemList)
-      console.log(mergedItemList)
-      const uniqueItemList = dedupeLists(dedupedItemList, dedupedItemList)
-      console.log(uniqueItemList)
+      const mergedItemList = mergeAndDeduplicateLists(updatedItems)
       addToItemsList(mergedItemList)
       setMode(TextAreaModes.view)
     }
