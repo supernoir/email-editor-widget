@@ -4,6 +4,7 @@ interface TextAreaProps {
   onClick?: () => void,
   onBlur?: () => void,
   onFocus?: () => void,
+  onPaste?: (evt: ({ stopPropagation?: any; preventDefault?: any; clipboardData?: any })) => void,
   onKeyPress?: (e: React.KeyboardEvent | { charCode: number }) => void,
   defaultValue?: string | string[],
   children?: React.ReactNode

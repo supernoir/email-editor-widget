@@ -23,12 +23,26 @@ export const TextArea: React.FC<TextAreaProps> = ({ itemList, removeItemFromList
     removeItemFromList(item)
   }
 
+  const handlePaste = (evt: { stopPropagation?: any; preventDefault?: any; clipboardData?: any }) => {
+    evt.stopPropagation();
+    evt.preventDefault();
+
+    let { clipboardData } = evt
+    let pastedData = clipboardData.getData('Text');
+    if (mode && mode === TextAreaModes.edit) {
+      addToItemsList(pastedData)
+      setMode(TextAreaModes.view)
+    } else {
+      setMode(TextAreaModes.edit)
+    }
+  }
+
   const handleKeyPress = (evt: { charCode: number, target: { value: string } }) => {
     if (evt.charCode === 13) {
       const rawInput = evt.target.value;
       const updateList = (input: string) => {
         try {
-          return input.trim().replace(/[&\/\\#+()$~%'":*?<>{}]/g, '').split(',')
+          return input.trim().replace(/[&\/\\#+()$~%'"“”​:*?<>{}]/g, '').split(',')
         } catch {
           return itemList
         }
@@ -101,7 +115,7 @@ export const TextArea: React.FC<TextAreaProps> = ({ itemList, removeItemFromList
         return displayItem(item, index)
       })}
     </StyledTextAreaView>)
-    : (<StyledTextAreaEdit onBlur={toggleMode} onKeyPress={handleKeyPress} defaultValue={itemList && itemList.map((item) => {
+    : (<StyledTextAreaEdit onPaste={handlePaste} onBlur={toggleMode} onKeyPress={handleKeyPress} defaultValue={itemList && itemList.map((item) => {
       return item
     })} />
     )
