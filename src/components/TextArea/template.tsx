@@ -23,7 +23,11 @@ export const TextArea: React.FC<TextAreaProps> = ({ itemList, removeItemFromList
     removeItemFromList(item)
   }
 
-  const handlePaste = (evt: { stopPropagation?: any; preventDefault?: any; clipboardData?: any }) => {
+  const handlePaste = (evt: {
+    stopPropagation: () => void
+    preventDefault: () => void,
+    clipboardData: { getData: (type: string) => ItemList }
+  }) => {
     evt.stopPropagation();
     evt.preventDefault();
 
@@ -78,8 +82,6 @@ export const TextArea: React.FC<TextAreaProps> = ({ itemList, removeItemFromList
       setMode(TextAreaModes.edit)
     }
   }
-
-  console.log(mode)
 
   const checkItemValidity = (item: string, type: ShareableTypes) => {
     switch (type) {
