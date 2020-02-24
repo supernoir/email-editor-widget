@@ -18,13 +18,8 @@ interface AppProps {
 }
 
 const App: React.FC<AppProps> = ({ shareableItem, shareableType }) => {
-	const testListItems = [
-		"example@mail.ru",
-		"jane.doe@gmail.com",
-		"johnny.appleseed@somelongdoma.in"
-	]
 
-	const [itemsCount, addToItemsCount] = useState(testListItems.length || 0)
+	const [itemsCount, addToItemsCount] = useState(0)
 	const [itemsList, setItemsList] = useState(new Array)
 	const [isSubscribed, toggleSubscription] = useState(false)
 	const defaultShareableItem = "My Miro Board"

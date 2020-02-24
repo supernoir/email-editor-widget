@@ -11,14 +11,14 @@ The Email Editor Widget lets you share a given item (for e.g. a particular SCRUM
 
 ### Installation - HTML
 - Include Email Editor widget in your html file by including it in the <head> section of your code
-   - ```<script src="../path/to/modules/email-editor-widget.js"/>```
+   - ```<script src="../path/to/modules/emails-editor/email-editor-widget.js"/>```
 
 ---
 
 ### Development
 - To contribute to the repository, run the following commands
    - In the repo's root folder, make "src" your current directory:
-      - ```$cd /src```
+      - ```$cd /lib```
    - Install the dependencies required
       - ```npm install```
    - Run the development server

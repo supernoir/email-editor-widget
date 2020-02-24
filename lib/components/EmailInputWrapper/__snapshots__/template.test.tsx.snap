@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmailInputWrapper should match the snapshot 1`] = `
+<div
+  className="sc-AxjAm gcgyev"
+>
+  <h1
+    className="sc-AxirZ kldERU"
+  >
+    <span>
+      Share 
+      <span
+        className="sc-AxiKw jnQlxW"
+      >
+        email
+      </span>
+       with others
+    </span>
+  </h1>
+  <div
+    className="sc-AxhCb bThKXd"
+    onBlur={[Function]}
+    onClick={[Function]}
+  >
+    <span
+      className="sc-AxgMl fMsxCz"
+    >
+      example@mail.ru
+       
+      <svg
+        fill="none"
+        height="8"
+        onClick={[Function]}
+        viewBox="0 0 8 8"
+        width="8"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clipRule="evenodd"
+          d="M8 0.8L7.2 0L4 3.2L0.8 0L0 0.8L3.2 4L0 7.2L0.8 8L4 4.8L7.2 8L8 7.2L4.8 4L8 0.8Z"
+          fill="#050038"
+          fillRule="evenodd"
+        />
+      </svg>
+    </span>
+    <span
+      className="sc-AxgMl fMsxCz"
+    >
+      jane.doe@gmail.com
+       
+      <svg
+        fill="none"
+        height="8"
+        onClick={[Function]}
+        viewBox="0 0 8 8"
+        width="8"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clipRule="evenodd"
+          d="M8 0.8L7.2 0L4 3.2L0.8 0L0 0.8L3.2 4L0 7.2L0.8 8L4 4.8L7.2 8L8 7.2L4.8 4L8 0.8Z"
+          fill="#050038"
+          fillRule="evenodd"
+        />
+      </svg>
+    </span>
+    <span
+      className="sc-AxgMl fMsxCz"
+    >
+      johnny.appleseed@somelongdoma.in
+       
+      <svg
+        fill="none"
+        height="8"
+        onClick={[Function]}
+        viewBox="0 0 8 8"
+        width="8"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          clipRule="evenodd"
+          d="M8 0.8L7.2 0L4 3.2L0.8 0L0 0.8L3.2 4L0 7.2L0.8 8L4 4.8L7.2 8L8 7.2L4.8 4L8 0.8Z"
+          fill="#050038"
+          fillRule="evenodd"
+        />
+      </svg>
+    </span>
+  </div>
+</div>
+`;
