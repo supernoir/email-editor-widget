@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { StyledContainer, GlobalStyle, StyledActionsWrapper } from "./style"
+import { StyledContainer, GlobalStyle, StyledActionsWrapper } from "./styles/style"
 import { Button } from "./components/Button/template"
 import { EmailInputWrapper } from './components/EmailInputWrapper/template'
 import { ThemeProvider } from 'styled-components'

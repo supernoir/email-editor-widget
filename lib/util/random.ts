@@ -1,7 +1,7 @@
 import { validateEmailAddress } from './validity'
-import firstNamesList from "./../data/firstname.json"
-import lastNamesList from "./../data/lastname.json"
-import domainsList from "./../data/domains.json"
+import firstNamesList from "../data/firstname.json"
+import lastNamesList from "../data/lastname.json"
+import domainsList from "../data/domains.json"
 
 export const getRandom = (min: number, max: number) => {
   return Math.round(Math.random() * (max - min) + min);
